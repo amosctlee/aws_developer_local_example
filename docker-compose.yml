@@ -21,10 +21,21 @@ services:
       - "/var/run/docker.sock:/var/run/docker.sock"
 
   elasticache:
-    container_name: "elaticache.local"
+    container_name: "elasticache.local"
     image: redis:5.0
     ports:
       - "6379:6379"
+  
+  linkfar-redis-commander:
+    container_name: redis-commander
+    hostname: redis-commander
+    image: rediscommander/redis-commander:latest
+    restart: always
+    environment:
+      - REDIS_HOSTS=local:elasticache.local:6379
+    ports:
+      - "18081:8081"
+
 
   develope-python-environment:
     container_name: "aws-python.local"
