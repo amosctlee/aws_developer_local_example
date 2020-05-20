@@ -1,0 +1,20 @@
+<!doctype html>
+
+<title>{% block title %}Read Files{% endblock title %}</title>
+<h1>{% block h1 %}Read Files{% endblock h1 %}</h1>
+
+{% block form %}
+{% endblock form %}
+
+<table border="1">
+<tr>
+    <td>已上傳的圖片</td>
+    <td>圖片下載連結</td>
+</tr>
+{% for i in length %}
+    <tr>
+        <td>{{ uploaded_images[i] }}</td>
+        <td>{{ images_url[i] }}</td>
+    </tr>
+{% endfor %}
+</table>
